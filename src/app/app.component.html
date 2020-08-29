@@ -11,14 +11,183 @@
             <tr class="">
               <th>Variable</th>
               <th>Pipe</th>
-              <th>Salida</th>
+              <th>Out</th>
             </tr>
           </thead>
           <tbody>
-            <tr> {{ nombre }} </tr>
-            <tr> lowerCase</tr>
-            <tr> {{ nombre | uppercase }} </tr>
+
+            <tr>
+              <td> {{ name_two }} </td>
+              <td> capitalizado </td>
+              <td> {{ name_two | capitalizado }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ name_two }} </td>
+              <td> 
+                constraseña: {{ activar }}
+                <br>
+                <button (click)="mostrarOcultar()" class="btn btn-warning">Activar / Desactivar </button>
+              </td>
+              <td> {{ name_two | contrasenia:activar }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ name }} </td>
+              <td> upperCase</td>
+              <td> {{ name | uppercase }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ name }} </td>
+              <td> upperCase</td>
+              <td> {{ name | uppercase }} </td>
+            </tr>
+            
+            <tr>
+              <td> {{ name }} </td>
+              <td> slice : 3</td>
+              <td> {{ name | slice: 3 }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ name }} </td>
+              <td> slice : 0 : 3</td>
+              <td> {{ name | slice:0 : 3 }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ array }} </td>
+              <td> slice : 1 : 6</td>
+              <td> {{ array | slice:1 : 6 }} </td>
+            </tr>
+
+            <tr>
+              <td> PI: {{ PI }} </td>
+              <td> number</td>
+              <td> {{ PI | number}} </td>
+            </tr>
+
+            <tr>
+              <td> PI: {{ PI }} </td>
+              <td> number: '1.0-0' </td>
+              <td> {{ PI | number: '1.0-0' }} </td>
+            </tr>
+
+            <tr>
+              <td> PI: {{ PI }} </td>
+              <td> number: '.0-2' </td>
+              <td> {{ PI | number: '.0-2' }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ percent }} </td>
+              <td> percent </td>
+              <td> {{ percent | percent }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ percent }} </td>
+              <td> percent: '.2' </td>
+              <td> {{ percent | percent: '.2' }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ salary }} </td>
+              <td> currency </td>
+              <td> {{ salary | currency }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ salary }} </td>
+              <td> currency: 'EUR' </td>
+              <td> {{ salary | currency: 'EUR' }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ salary }} </td>
+              <td> currency: 'ARS':'symbol':'.0-0' </td>
+              <td> {{ salary  | currency: 'ARS ':'symbol':'.0-0' }} </td>
+            </tr>
+
+            <tr>
+              <td> {{ valuePromise }} </td>
+              <td> async </td>
+              <td> {{ valuePromise  | async}} </td>
+            </tr>
+
+            <tr>
+              <td> {{ date }} </td>
+              <td> Date </td>
+              <td> {{ date  | date}} </td>
+            </tr>
+
+            <tr>
+              <td> {{ date }} </td>
+              <td> Date:'medium' </td>
+              <td> {{ date  | date:'medium'}} </td>
+            </tr>
+
+            <tr>
+              <td> {{ date }} </td>
+              <td> Date:'short' </td>
+              <td> {{ date  | date:'short'}} </td>
+            </tr>
+
+            <tr>
+              <td> {{ date }} </td>
+              <td> Date:'personalizado' </td>
+              <td> {{ date  | date:'MMMM - dd '}} </td>
+            </tr>
+
+            <tr>
+              <td> {{ date }} </td>
+              <td> 
+                Date:'MMMM - dd':'':'{{ idioma }}'
+                <br>
+                <button (click)="idioma='es'" #es class="mr-1 btn btn-danger" style="color:yellow;">Spain</button>
+                <button (click)="idioma='fr'" #en class="mr-1 btn btn-primary">French</button>
+                <button (click)="idioma='en'" #fr class="mr-1 btn btn-light">English</button>
+              </td>
+              <td> {{ date  | date:'MMMM - dd':'':idioma }} </td>
+            </tr>
+
+
+
+
           </tbody>
         </table>
+
+        <h3>Slice in loop For</h3>
+
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let item of array | slice: 7: 15"> {{ item }} </li>
+        </ul>
+
+        <h3>JSON</h3>
+
+        <div class="row">
+          <div class="col">
+            <pre>
+              {{ hero | json }}
+            </pre>
+          </div>  
+        </div>
+
+        <h3 class="mt-4">DOM Seguro</h3>
+        <hr>
+
+        <div class="row mb-5">
+          <div class="col">
+            <iframe width="560"
+                    height="315" 
+                    [src]="videoUrl | domseguro" 
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
     </div>
   </div>
